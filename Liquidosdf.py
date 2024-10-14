@@ -1,4 +1,5 @@
 import json
+import pandas as pd
 
 with open('Liquidos.json') as json_file:
     data = json.load(json_file)
@@ -8,4 +9,4 @@ with open('Liquidos.json') as json_file:
         nombre.append(data['data']['products'][x]['name'])
         precio.append(data['data']['products'][x]['prices'][0]['price'])
 
-print(nombre,precio)
+df = pd.DataFrame(list(zip(nombre, precio)), columns=['Nombre', 'Precio'])
